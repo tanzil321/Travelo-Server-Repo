@@ -31,6 +31,14 @@ async function run(){
             const query = { _id: ObjectId(id) };
             const result = await serviceCollection.findOne(query);
             res.send(result)
+        });
+
+        app.get('/comments',async(req,res)=>{
+            const query = {}
+            const cursor = serviceComments.find(query);
+            const comments= await cursor.toArray();
+            res.send(comments);
+            
         })
        
     }
