@@ -32,15 +32,19 @@ async function run(){
             const result = await serviceCollection.findOne(query);
             res.send(result)
         });
-
         app.get('/comments',async(req,res)=>{
             const query = {}
             const cursor = serviceComments.find(query);
             const comments= await cursor.toArray();
             res.send(comments);
             
-        })
-       
+        });
+        app.post('/comments', async (req, res) => {
+            let comments = req.body
+            const query = await serviceComments.insertOne(comments);
+            res.send(query)
+        });
+        
     }
     finally{
 
