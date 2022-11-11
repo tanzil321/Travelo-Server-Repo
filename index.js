@@ -44,7 +44,11 @@ async function run(){
             const query = await serviceComments.insertOne(comments);
             res.send(query)
         });
-        
+        app.post('/services', async (req, res) => {
+            let services = req.body
+            const query = await serviceCollection.insertOne(services);
+            res.send(query)
+        });
     }
     finally{
 
