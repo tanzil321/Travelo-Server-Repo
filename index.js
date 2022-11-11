@@ -84,7 +84,7 @@ async function run(){
             const id = req.params.id;
             const filter = { _id: ObjectId(id) }
             const body = req.body;
-            console.log(body)
+            console.log(body);
             const option = { upsert: true }
             const updateUser = {
                 $set: {
